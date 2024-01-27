@@ -19,7 +19,7 @@ RUN python -m pip install --user -r requirements.txt
 COPY --chown=algorithm:algorithm process.py /opt/algorithm/
 COPY --chown=algorithm:algorithm settings.py /opt/algorithm/
 COPY --chown=algorithm:algorithm grandchallenges/ /opt/algorithm/grandchallenges
-COPY --chown=algorithm:algorithm Unet-mit-b2-zeros-augmented2-d-10.pth /opt/algorithm/
+COPY --chown=algorithm:algorithm Unet-mit-b2-zeros-augmented-tnt-d-10-epochs-150.pth /opt/algorithm/
 
 # COPY --chown=algorithm:algorithm isles/ /opt/algorithm/isles
 ENTRYPOINT python -m process $0 $@

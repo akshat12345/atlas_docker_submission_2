@@ -103,7 +103,7 @@ class Seg():
             classes=1,                      # model output channels (number of classes in your dataset)
             activation='sigmoid',
         )
-        model.load_state_dict(torch.load('./Unet-mit-b2-zeros-augmented2-d-10.pth',map_location=torch.device('cpu'))) #map_location=torch.device('cpu')
+        model.load_state_dict(torch.load('./Unet-mit-b2-zeros-augmented-tnt-d-10-epochs-150.pth',map_location=torch.device('cpu'))) #map_location=torch.device('cpu')
         model.to(device)
 
         for file in file_list:
