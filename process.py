@@ -49,9 +49,11 @@ def converttovoxel(image,intercept,slope):
     return image
 
 
-def preprocessing(data):
+def preprocessing(data,slope,intercept):
     print(data.shape)
     process_t1 = np.zeros([192,192,189],dtype = np.float32)
+    print(np.unique(data))
+    data = converttovoxel(data,intercept,slope)
     print(np.unique(data))
     for k in range(data.shape[2]):
         mrivox = data[:,:,k]
@@ -109,7 +111,8 @@ class Seg():
 
         for file in file_list:
             dat,hdr = load(file)
-            t1_numpy = nib.load(file)
+            t1_obj = nib.load(file)
+            # t1_numpy = nib.load(file).get_fdata()
             im_shape = dat.shape
             print(im_shape)#_______________________
             print('before reshaping -> ' , dat.shape)
@@ -117,7 +120,7 @@ class Seg():
             print('after reshaping -> ', dat.shape)
             data = dat
             print(file.split('/')[-1])
-            processed_img_np = preprocessing(data)
+            processed_img_np = preprocessing(data,t1_obj.dataobj.slope,t1_obj.dataobj.intercept)
 
             y_pred = []
             for cnt in range(0,189,1):
