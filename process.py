@@ -52,6 +52,7 @@ def converttovoxel(image,intercept,slope):
 def preprocessing(data):
     print(data.shape)
     process_t1 = np.zeros([192,192,189],dtype = np.float32)
+    print(np.unique(data))
     for k in range(data.shape[2]):
         mrivox = data[:,:,k]
         result_slice,all_zeros = process_slice(mrivox,k)
@@ -67,7 +68,7 @@ def preprocessing(data):
 #         temp = cv.resize(data[:,:,k],(192,192),interpolation=cv.INTER_CUBIC)
 #         plt.subplot(132),plt.imshow(temp,cmap=plt.cm.gray),plt.title('2')
 #         plt.show()
-    
+    print(np.unique(process_t1))
     print(process_t1.shape)
     process_t1 = np.expand_dims(process_t1,0)
     process_t1 = np.moveaxis(process_t1, 3,0)
