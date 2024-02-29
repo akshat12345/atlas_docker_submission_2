@@ -109,6 +109,7 @@ class Seg():
 
         for file in file_list:
             dat,hdr = load(file)
+            t1_numpy = nib.load(file)
             im_shape = dat.shape
             print(im_shape)#_______________________
             print('before reshaping -> ' , dat.shape)
